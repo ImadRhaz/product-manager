@@ -1,0 +1,56 @@
+  [HttpGet("history/{id}")]
+  public async Task<ActionResult<IEnumerable<ProductHistoryViewModel>>> GetProductHistory(int id)
+  {
+      try
+      {
+          // Fetch the product and its components
+          var product = await _context.Products
+                                      .Include(p => p.Composents) // Include components
+                                      .FirstOrDefaultAsync(p => p.Id == id);
+
+          if (product == null)
+          {
+              return NotFound(new { message = "Produit non trouvé." });
+          }
+
+          // Get component IDs from the product
+          var componentIds = product.Composents.Select(c => c.Id).ToList();
+
+          // Fetch commandes related to the product's components and include Technicien (User)
+          var commandes = await _context.Commandes
+                                        .Where(c => componentIds.Contains(c.ComposentId))
+                                        .Include(c => c.Technicien) // Include the technician details
+                                        .ToListAsync();
+
+          // Fetch the associations that match the product's serial number and hardware ID
+          var associations = await _context.CommandeEnGrosAssociations
+                                           .Include(a => a.CommandeEnGros) // Include CommandeEnGros to access Art Number
+                                           .Where(a => a.SerieNumber == product.SN && a.HardId == product.HardId)
+                                           .ToListAsync();
+
+          // Map the product history, components, and commandes to the view model
+          var result = product.Composents.Select(c =>
+          {
+              // Find matching commande for the component
+              var commande = commandes.FirstOrDefault(cmd => cmd.ComposentId == c.Id);
+
+              return new ProductHistoryViewModel
+              {
+                  SnProduit = product.SN,
+                  SNComposent = c.SN ?? "N/A", // Old serial number from Composent
+                  NewSN = commande?.NewSN ?? "N/A", // New serial number from Commande
+                  ArticleNumber = c.ArticleNumber,
+                  HardId = product.HardId,
+                  NomComposent = c.Nom,
+                  EtatComposent = c.EtatComposent,
+                  DateCommande = commande?.DateCommande ?? DateTime.Now, // Date from Commande
+                  DescriptionProduct = "Description goes here", // Placeholder description
+                  MaintenanceDate = DateTime.Now, // Placeholder maintenance date
+
+                  // Access the technician's name from the Commande (not from the Product)
+                  NomTechnicien = commande?.Technicien?.Nom ?? "N/A", // Get technician's name from the commande
+                  PrenomTechnicien = commande?.Technicien?.Prenom ?? "N/A", // Get technician's first name from the commande
+
+                  ValidateComposent = c.ValidateComposent
+              };
+          }).ToList();
