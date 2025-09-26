@@ -7,7 +7,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import jakarta.mail.MessagingException; // Utilise jakarta.mail pour Spring Boot 3.x
+import jakarta.mail.MessagingException; 
 import jakarta.mail.internet.MimeMessage;
 
 import java.io.File;
@@ -16,9 +16,9 @@ import java.io.File;
 public class EmailService {
 
     @Autowired
-    private JavaMailSender mailSender; // Spring injectera l'instance configurée dans application.properties
+    private JavaMailSender mailSender; 
 
-    @Value("${app.mail.sender-from:noreply@example.com}") // Adresse expéditeur par défaut
+    @Value("${app.mail.sender-from:noreply@example.com}") 
     private String senderFrom;
 
     /**
@@ -68,22 +68,5 @@ public class EmailService {
         }
     }
 
-    // Potentiellement, une méthode pour envoyer un email avec une pièce jointe (si nécessaire pour le projet)
-    /*
-    public void sendEmailWithAttachment(String to, String subject, String text, String pathToAttachment) throws MessagingException, IOException {
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true); // true pour multipart
-
-        helper.setFrom(senderFrom);
-        helper.setTo(to);
-        helper.setSubject(subject);
-        helper.setText(text);
-
-        // Attacher le fichier
-        FileSystemResource file = new FileSystemResource(new File(pathToAttachment));
-        helper.addAttachment(file.getFilename(), file);
-
-        mailSender.send(message);
-    }
-    */
+   
 }
