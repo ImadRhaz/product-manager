@@ -21,7 +21,6 @@ Une application web complète pour gérer des produits avec : CRUD, validations 
 
 ---
 
-<a name="introduction"></a>
 ## 💡 1. Introduction
 Ce projet démontre la capacité à développer une application web complète :
 
@@ -33,7 +32,6 @@ Ce projet démontre la capacité à développer une application web complète :
 
 ---
 
-<a name="fonctionnalites"></a>
 ## ⚙️ 2. Fonctionnalités
 
 ### Backend
@@ -53,7 +51,6 @@ Ce projet démontre la capacité à développer une application web complète :
 
 ---
 
-<a name="installation-et-execution"></a>
 ## 💻 3. Installation et exécution
 
 ### Prérequis
@@ -89,7 +86,6 @@ L’application s’ouvre automatiquement.
 
 Création, modification, suppression avec validations et notifications.
 
-<a name="validations-dynamiques"></a>
 
 ✅ 4. Validations dynamiques
 
@@ -101,7 +97,6 @@ Frontend : FormGroup Angular avec Validators.required.
 
 ProductFormComponent met à jour les validations automatiquement.
 
-<a name="gestion-des-fichiers-uploades"></a>
 
 📂 5. Gestion des fichiers uploadés
 Backend
@@ -118,7 +113,6 @@ Prévisualisation des images dans le formulaire.
 
 Envoi via FormData.
 
-<a name="emails-et-taches-planifiees"></a>
 
 📧 6. Emails et tâches planifiées
 Emails
@@ -137,7 +131,6 @@ Suppression produits périmés et récapitulatif quotidien.
 
 Nécessite @EnableScheduling dans la classe principale.
 
-<a name="architecture-et-diagramme"></a>
 
 🏗️ 7. Architecture et diagramme
 Diagramme simplifié de l’architecture
@@ -156,8 +149,11 @@ Backend Spring Boot
 └───────┬─────────────┘
         │ JPA/Hibernate
         ▼
-Database H2 
-Structure Backend
+Database H2
+
+
+Structure Backend:
+
 src/main/java/com/example/productmanager/
 ├─ model/           # Entités
 ├─ repository/      # Repositories
@@ -166,7 +162,10 @@ src/main/java/com/example/productmanager/
 ├─ dto/             # Data Transfer Objects
 ├─ scheduling/      # Tâches planifiées
 └─ ProductManagerBackendApplication.java
-Structure Frontend
+
+
+Structure Frontend:
+
 src/app/
 ├─ components/
 │  ├─ product-form/
@@ -177,7 +176,6 @@ src/app/
 ├─ app.component.*
 ├─ app.routes.ts
 └─ environments/
-<a name="livrables"></a>
 
 📦 8. Livrables
 
