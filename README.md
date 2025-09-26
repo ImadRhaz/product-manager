@@ -1,9 +1,13 @@
-# 🚀 Gestion de Produits – Application Full-Stack
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=150&section=header&text=Gestion%20de%20Produits%20🚀&fontSize=40&fontColor=ffffff&animation=fadeIn" alt="banner"/>
+</p>
 
-[![Backend](https://img.shields.io/badge/Backend-Spring%20Boot-green)](https://spring.io/projects/spring-boot)
-[![Frontend](https://img.shields.io/badge/Frontend-Angular-red)](https://angular.io/)
-[![Java](https://img.shields.io/badge/Java-17-blue)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-[![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
+<p align="center">
+  <a href="https://spring.io/projects/spring-boot"><img src="https://img.shields.io/badge/Backend-Spring%20Boot-green" /></a>
+  <a href="https://angular.io/"><img src="https://img.shields.io/badge/Frontend-Angular-red" /></a>
+  <a href="https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html"><img src="https://img.shields.io/badge/Java-17-blue" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey" /></a>
+</p>
 
 ---
 
@@ -56,13 +60,13 @@ Ce projet démontre la capacité à développer une application web complète :
 - Postman ou équivalent pour tester l’API  
 
 ### ▶️ Backend
-
+```bash
 git clone <URL_DU_DEPOT>
 cd product-manager-backend
 mvn spring-boot:run
 Base H2 par défaut. Pour persistance :
 
-bash
+properties
 Copy code
 spring.datasource.url=jdbc:h2:file:./h2_data/productdb
 📌 Endpoints API
@@ -79,7 +83,7 @@ DELETE /api/produits/{id}
 
 H2 Console : http://localhost:8080/h2-console (login: sa / password: password)
 
-### ▶️ Frontend
+▶️ Frontend
 bash
 Copy code
 cd product-manager-frontend
@@ -107,7 +111,6 @@ Envoi via FormData.
 
 📧 6. Emails et tâches planifiées
 ✉️ Emails
-
 Config SMTP dans application.properties.
 
 EmailService pour envoi HTML ou texte.
@@ -115,7 +118,6 @@ EmailService pour envoi HTML ou texte.
 Emails automatiques à la création/modification.
 
 ⏰ Tâches planifiées
-
 ProductScheduler.java avec @Scheduled.
 
 Suppression des produits périmés.
@@ -125,10 +127,9 @@ Récapitulatif quotidien.
 Nécessite @EnableScheduling dans la classe principale.
 
 🏗️ 7. Architecture et diagramme
-
 📊 Diagramme simplifié
-
-
+css
+Copy code
 Frontend Angular
 ┌─────────────────────┐
 │ ProductFormComponent │
@@ -144,12 +145,10 @@ Backend Spring Boot
 └──────────┬──────────┘
            │ JPA/Hibernate
            ▼
-     Database H2
-
+Database H2
 📁 Structure Backend
-
-
-
+bash
+Copy code
 src/main/java/com/example/productmanager/
 ├─ model/           # Entités
 ├─ repository/      # Repositories
@@ -158,9 +157,9 @@ src/main/java/com/example/productmanager/
 ├─ dto/             # Data Transfer Objects
 ├─ scheduling/      # Tâches planifiées
 └─ ProductManagerBackendApplication.java
-
 📁 Structure Frontend
-
+css
+Copy code
 src/app/
 ├─ components/
 │  ├─ product-form/
@@ -171,7 +170,6 @@ src/app/
 ├─ app.component.*
 ├─ app.routes.ts
 └─ environments/
-
 📦 8. Livrables
 Code source complet sur GitHub/GitLab.
 
