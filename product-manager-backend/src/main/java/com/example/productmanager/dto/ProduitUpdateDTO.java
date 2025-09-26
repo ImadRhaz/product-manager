@@ -1,4 +1,3 @@
-// ProduitUpdateDTO.java
 package com.example.productmanager.dto;
 
 import org.springframework.web.multipart.MultipartFile;
