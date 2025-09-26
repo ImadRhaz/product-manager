@@ -1,0 +1,61 @@
+/* Styles pour les notifications (à mettre dans app.component.css ou styles.css) */
+
+.app-container {
+  position: relative; /* Permet de positionner les notifications par rapport à cet élément */
+  min-height: 100vh; /* Assure que le conteneur prend toute la hauteur */
+}
+
+.notification-toast {
+  position: fixed; /* Position fixe par rapport à la fenêtre */
+  top: 20px;
+  right: 20px; /* Positionné en haut à droite */
+  padding: 15px 25px; /* Espacement interne */
+  border-radius: 8px; /* Bords arrondis */
+  color: white;
+  font-weight: bold;
+  z-index: 1000; /* Pour s'assurer qu'elles sont au-dessus des autres éléments */
+  opacity: 0; /* Caché par défaut */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Animation douce */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Ombre légère */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.notification-toast-visible {
+  opacity: 1; /* Rendu visible */
+  /* Optional: Add a slight lift effect */
+  transform: translateY(-5px);
+}
+
+/* Styles pour les différents types de notifications */
+.notification-toast.notification-success {
+  background-color: #28a745; /* Vert pour succès */
+}
+
+.notification-toast.notification-error {
+  background-color: #dc3545; /* Rouge pour erreur */
+}
+
+.notification-toast.notification-info {
+  background-color: #17a2b8; /* Bleu pour info */
+}
+
+/* Style pour le message dans la notification */
+.notification-message {
+  flex-grow: 1; /* Permet au message de prendre l'espace disponible */
+}
+
+/* Style optionnel pour un bouton de fermeture */
+.notification-toast .close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem; /* Plus grand */
+  font-weight: bold;
+  margin-left: 15px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}

@@ -1,0 +1,12 @@
+<div class="app-container">
+  <router-outlet></router-outlet>
+
+  <!-- Zone pour afficher les notifications -->
+  <div *ngIf="currentNotification"
+       class="notification-toast notification-{{ currentNotification.type }}"
+       [ngClass]="{'notification-toast-visible': currentNotification}">
+    <div class="notification-message">{{ currentNotification.message }}</div>
+    <!-- Bouton optionnel pour fermer la notification -->
+    <!-- <button (click)="closeNotification()" class="close-btn">&times;</button> -->
+  </div>
+</div>
