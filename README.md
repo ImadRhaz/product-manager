@@ -60,7 +60,7 @@ Ce projet démontre la capacité à développer une application web complète :
 - Postman ou équivalent pour tester l’API  
 
 ### ▶️ Backend
-```bash
+
 git clone <URL_DU_DEPOT>
 cd product-manager-backend
 mvn spring-boot:run
