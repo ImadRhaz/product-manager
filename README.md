@@ -132,22 +132,7 @@ Nécessite @EnableScheduling dans la classe principale.
 🏗️ 7. Architecture et diagramme
 📊 Diagramme simplifié
 
-Frontend Angular
-┌─────────────────────┐
-│ ProductFormComponent │
-│ ProductsListComponent│
-└──────────┬───────────┘
-           │ HTTP Requests
-           ▼
-Backend Spring Boot
-┌─────────────────────┐
-│ ProductController   │
-│ ProductService      │
-│ EmailService        │
-└──────────┬──────────┘
-           │ JPA/Hibernate
-           ▼
-      Database H2
+
 
 
 
