@@ -56,7 +56,7 @@ Ce projet démontre la capacité à développer une application web complète :
 - Postman ou équivalent pour tester l’API  
 
 ### ▶️ Backend
-```bash
+
 git clone <URL_DU_DEPOT>
 cd product-manager-backend
 mvn spring-boot:run
@@ -79,7 +79,7 @@ DELETE /api/produits/{id}
 
 H2 Console : http://localhost:8080/h2-console (login: sa / password: password)
 
-▶️ Frontend
+### ▶️ Frontend
 bash
 Copy code
 cd product-manager-frontend
