@@ -132,6 +132,23 @@ Nécessite @EnableScheduling dans la classe principale.
 🏗️ 7. Architecture et diagramme
 📊 Diagramme simplifié
 
+Frontend Angular
+┌─────────────────────┐
+│ ProductFormComponent │
+│ ProductsListComponent│
+└──────────┬───────────┘
+           │ HTTP Requests
+           ▼
+Backend Spring Boot
+┌─────────────────────┐
+│ ProductController   │
+│ ProductService      │
+│ EmailService        │
+└──────────┬──────────┘
+           │ JPA/Hibernate
+           ▼
+     Database H2
+
 
 
 
@@ -140,8 +157,8 @@ Nécessite @EnableScheduling dans la classe principale.
 📁 Structure Backend
 
 src/main/java/com/example/productmanager/
-├─ model/           # Entités
-├─ repository/      # Repositories
+├─ model/           
+├─ repository/      
 ├─ service/         # Logique métier, EmailService
 ├─ controller/      # API REST
 ├─ dto/             # Data Transfer Objects
