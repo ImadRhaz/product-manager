@@ -30,8 +30,7 @@ public class ProduitCreateDTO {
     // Le fichier uploadé
     private MultipartFile file;
 
-    // Getters et Setters (tu peux utiliser Lombok @Data, @Getter, @Setter si tu préfères,
-    // mais pour un DTO, les écrire explicitement est aussi courant)
+   
 
     public String getNom() { return nom; }
     public void setNom(String nom) { this.nom = nom; }
@@ -54,7 +53,6 @@ public class ProduitCreateDTO {
     public MultipartFile getFile() { return file; }
     public void setFile(MultipartFile file) { this.file = file; }
 
-    // Tu peux aussi ajouter une méthode pour convertir ce DTO en entité Produit
     public Produit toEntity() {
         Produit produit = new Produit();
         produit.setNom(this.nom);
@@ -63,7 +61,6 @@ public class ProduitCreateDTO {
         produit.setReference(this.reference);
         produit.setMatricule(this.matricule);
         produit.setDateExpiration(this.dateExpiration);
-        // Le fileName sera géré après l'upload du fichier
         return produit;
     }
 }
