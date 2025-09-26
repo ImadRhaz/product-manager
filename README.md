@@ -18,7 +18,7 @@ Cette application web full-stack, développée avec **Angular** pour le frontend
 *   Validations de champs conditionnelles basées sur la catégorie.
 *   Upload de fichiers associés aux produits.
 *   Notifications par email pour les actions sur les produits.
-*   Tâches planifiées pour l'archivage automatique des produits périmés et l'envoi d'un récapitulatif quotidien.
+*   Tâches planifiées pour  l'envoi d'un récapitulatif quotidien.
 
 ## 🚀 Fonctionnalités Implémentées
 
@@ -33,7 +33,7 @@ Cette application web full-stack, développée avec **Angular** pour le frontend
     *   Formulaire réactif pour créer et modifier des produits.
     *   Affichage dynamique des champs requis selon la catégorie sélectionnée.
     *   Upload de fichier avec nom du fichier affiché et prévisualisation pour les images.
-    *   Notifications visuelles (succès, erreur) pour les opérations.
+    *   Notifications visuelles (succès) pour les opérations.
 
 ## 🛠️ Installation et Exécution
 
@@ -54,8 +54,7 @@ Ce projet se compose d'un backend (Spring Boot) et d'un frontend (Angular).
 1.  **Récupérer le code :** Clonez le dépôt ou extrayez le code source du backend.
 2.  **Configurer les propriétés :**
     *   Ouvrez le fichier `src/main/resources/application.properties`.
-    *   Configurez les paramètres d'envoi d'e-mails (`spring.mail.*`) et l'adresse de l'administrateur pour les alertes (`app.admin-email`). Par exemple, pour Gmail, vous pourriez avoir besoin d'un mot de passe d'application.
-    *   Si vous souhaitez que les données H2 soient persistantes pendant le développement, modifiez le `spring.datasource.url` dans `application.properties` : `jdbc:h2:file:./h2_data/productdb`.
+    *   Configurez les paramètres d'envoi d'e-mails (`spring.mail.*`) pour Gmail vous pourriez avoir besoin d'un mot de passe d'application.
 3.  **Lancer l'application :**
     *   **Via IDE :** Exécutez la classe principale `ProductManagerBackendApplication.java`.
     *   **Via Maven :** Depuis la racine du répertoire backend, lancez la commande : `mvn spring-boot:run`.
@@ -81,7 +80,7 @@ Ce projet se compose d'un backend (Spring Boot) et d'un frontend (Angular).
     *   Naviguez vers `/products` pour voir la liste des produits.
     *   Cliquez sur "Nouveau Produit" pour accéder au formulaire de création.
     *   Utilisez le formulaire pour créer, modifier des produits, y compris l'upload de fichiers.
-    *   Vérifiez les notifications d'action (succès, erreur) qui apparaissent en haut à droite.
+    *   Vérifiez les notifications d'action (succès) qui apparaissent en haut à droite.
 
 ### <a name="explication-des-validations-dynamiques"></a>4. Explication des validations dynamiques
 
@@ -129,7 +128,7 @@ La validation dynamique des champs selon la catégorie est implémentée de la m
     *   **Envoi d'emails :**
         *   Dans le backend : Le `EmailService` contient les méthodes pour envoyer des emails simples (`sendSimpleMessage`) et HTML (`sendHtmlMessage`). Le `ProductService` appelle ces méthodes après la création/modification d'un produit.
         *   Frontend : Le frontend ne gère pas l'envoi direct des emails, mais il affiche des notifications pour confirmer que l'action (qui déclenche l'email) a été effectuée.
-    *   **Alertes critiques :** Ce n'est pas encore implémenté, mais le code est prévu pour pouvoir capturer les exceptions dans les services et appeler une méthode d'alerte qui enverrait un email à l'administrateur.
+    *   **Alertes critiques :** le code est prévu pour pouvoir capturer les exceptions dans les services et appeler une méthode d'alerte qui enverrait un email à l'administrateur.
 *   **Tâches planifiées (Cron Jobs) :**
     *   Dans le backend, la classe `ProductScheduler` utilise l'annotation `@Scheduled` avec des expressions CRON.
     *   `archiveOrDeleteExpiredProducts()` est planifiée pour s'exécuter tous les jours à minuit (`0 0 0 * * ?`). Elle trouve les produits périmés via `ProductService.getProduitsPerimes()` et les supprime.
