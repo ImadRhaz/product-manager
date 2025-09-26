@@ -2,28 +2,25 @@ package com.example.productmanager.scheduling;
 
 import com.example.productmanager.model.Produit;
 import com.example.productmanager.service.ProduitService;
-import com.example.productmanager.service.mail.EmailService; // Pour envoyer l'email récapitulatif
+import com.example.productmanager.service.mail.EmailService; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import jakarta.mail.MessagingException; // Pour les exceptions d'envoi d'email
+import jakarta.mail.MessagingException; 
 import java.time.LocalDate;
 import java.util.List;
 
-@Component // Marque cette classe comme un composant Spring géré par le contexte
+@Component 
 public class ProductScheduler {
 
     @Autowired
     private ProduitService produitService;
 
     @Autowired
-    private EmailService emailService; // Service pour envoyer les emails
+    private EmailService emailService; 
 
-    /**
-     * Tâche planifiée pour archiver ou supprimer les produits périmés.
-     * Elle s'exécute tous les jours à 00:00 (minuit).
-     */
+    
     @Scheduled(cron = "0 * * * * ?") // Exécute toutes les minutes    // L'expression "0 0 0 * * ?" signifie : à la 0ème minute, 0ème heure, de chaque jour.
     public void archiveOrDeleteExpiredProducts() {
         System.out.println("Exécution de la tâche planifiée : Archivage/suppression des produits périmés.");
@@ -125,15 +122,9 @@ public class ProductScheduler {
 
     // Méthode simulée pour obtenir les produits ajoutés récemment (à remplacer par une vraie requête DB)
     private List<Produit> getSimulatedAddedProducts() {
-        // Dans une vraie application, tu devrais ajouter une méthode dans ProduitRepository
-        // pour récupérer les produits créés après une certaine date (ex: yesterday).
-        // Pour l'instant, on simule quelques produits.
+        
         return List.of(
-                // new Produit(1L, "Clavier XYZ", 80.0, "Informatique", "KB-XYZ-123", null, null, "clavier_xyz.png"),
-                // new Produit(2L, "Souris Gamer", 45.50, "Informatique", "MS-GAMER-002", null, null, "souris_gamer.jpg")
-                // Note : Ces produits ne seront pas réellement chargés depuis la base de données avec ce code simulé.
-                // Il faudrait une logique pour les récupérer de la DB.
-                // Pour réellement tester cela, il faudrait adapter le ProduitRepository pour trouver les produits par date.
+               
         );
     }
 }
