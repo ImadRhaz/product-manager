@@ -1,4 +1,4 @@
-// src/app/model/produit.ts
+
 
 export interface Produit {
   id: number | null;
@@ -9,6 +9,6 @@ export interface Produit {
   matricule?: string | null;
   dateExpiration?: string | null;
 
-  // Ajoute la propriété fileName ici
+ 
   fileName: string | null;
 }
