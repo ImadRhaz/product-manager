@@ -18,8 +18,7 @@
 4. [Validations dynamiques](#-4-validations-dynamiques)  
 5. [Gestion des fichiers uploadés](#-5-gestion-des-fichiers-uploadés)  
 6. [Emails et tâches planifiées](#-6-emails-et-tâches-planifiées)  
-7. [Architecture et diagramme](#-7-architecture-et-diagramme)  
-8. [Livrables](#-8-livrables)  
+7. [Livrables](#-8-livrables)  
 
 ---
 
@@ -129,56 +128,8 @@ Récapitulatif quotidien.
 
 Nécessite @EnableScheduling dans la classe principale.
 
-🏗️ 7. Architecture et diagramme
-📊 Diagramme simplifié
 
-Frontend Angular
-┌─────────────────────┐
-│ ProductFormComponent │
-│ ProductsListComponent│
-└──────────┬───────────┘
-           │ HTTP Requests
-           ▼
-Backend Spring Boot
-┌─────────────────────┐
-│ ProductController   │
-│ ProductService      │
-│ EmailService        │
-└──────────┬──────────┘
-           │ JPA/Hibernate
-           ▼
-     Database H2
-
-
-
-
-
-
-📁 Structure Backend
-
-src/main/java/com/example/productmanager/
-├─ model/           
-├─ repository/      
-├─ service/         # Logique métier, EmailService
-├─ controller/      # API REST
-├─ dto/             # Data Transfer Objects
-├─ scheduling/      # Tâches planifiées
-└─ ProductManagerBackendApplication.java
-
-📁 Structure Frontend
-
-src/app/
-├─ components/
-│  ├─ product-form/
-│  └─ products-list/
-├─ services/
-├─ model/
-├─ dto/
-├─ app.component.*
-├─ app.routes.ts
-└─ environments/
-
-📦 8. Livrables
+📦 7. Livrables
 Code source complet sur GitHub/GitLab.
 
 README détaillé et structuré.
