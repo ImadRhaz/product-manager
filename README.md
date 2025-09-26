@@ -89,6 +89,7 @@ Copy code
 cd product-manager-frontend
 npm install
 ng serve --open
+
 ✅ 4. Validations dynamiques
 Backend : ProduitCreateDTO avec @NotBlank, @NotNull.
 
@@ -98,6 +99,7 @@ Le ProductFormComponent met à jour les validations automatiquement.
 
 📂 5. Gestion des fichiers uploadés
 🔹 Backend
+
 Stockage dans uploads/ avec nom unique.
 
 Suppression automatique lors de la suppression du produit.
@@ -111,6 +113,7 @@ Envoi via FormData.
 
 📧 6. Emails et tâches planifiées
 ✉️ Emails
+
 Config SMTP dans application.properties.
 
 EmailService pour envoi HTML ou texte.
@@ -128,8 +131,7 @@ Nécessite @EnableScheduling dans la classe principale.
 
 🏗️ 7. Architecture et diagramme
 📊 Diagramme simplifié
-css
-Copy code
+
 Frontend Angular
 ┌─────────────────────┐
 │ ProductFormComponent │
@@ -145,10 +147,13 @@ Backend Spring Boot
 └──────────┬──────────┘
            │ JPA/Hibernate
            ▼
-Database H2
+      Database H2
+
+
+
+
 📁 Structure Backend
-bash
-Copy code
+
 src/main/java/com/example/productmanager/
 ├─ model/           # Entités
 ├─ repository/      # Repositories
@@ -157,9 +162,9 @@ src/main/java/com/example/productmanager/
 ├─ dto/             # Data Transfer Objects
 ├─ scheduling/      # Tâches planifiées
 └─ ProductManagerBackendApplication.java
+
 📁 Structure Frontend
-css
-Copy code
+
 src/app/
 ├─ components/
 │  ├─ product-form/
@@ -170,6 +175,7 @@ src/app/
 ├─ app.component.*
 ├─ app.routes.ts
 └─ environments/
+
 📦 8. Livrables
 Code source complet sur GitHub/GitLab.
 
