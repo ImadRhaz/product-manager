@@ -76,7 +76,8 @@ Ce projet se compose d'un backend (Spring Boot) et d'un frontend (Angular).
     ng serve --open
     ```
     L'application s'ouvrira automatiquement dans votre navigateur à `http://localhost:4200/`.
-5.  **Utilisation :**
+    
+6.  **Utilisation :**
     *   Naviguez vers `/products` pour voir la liste des produits.
     *   Cliquez sur "Nouveau Produit" pour accéder au formulaire de création.
     *   Utilisez le formulaire pour créer, modifier des produits, y compris l'upload de fichiers.
@@ -89,6 +90,8 @@ La validation dynamique des champs selon la catégorie est implémentée de la m
 *   **Backend (Spring Boot) :**
     *   Dans l'entité `Produit`, tous les champs potentiellement requis (`reference`, `matricule`, `dateExpiration`) sont inclus.
     *   Dans le `ProduitService`, la méthode `validateProduit()` contient une logique `switch` sur le champ `categorie`. Selon la catégorie, elle vérifie si les champs spécifiques sont présents et valides (non nuls, non vides) en utilisant `StringUtils.hasText()` ou en vérifiant si la date est non nulle. Si une validation échoue, elle lève une `IllegalArgumentException`.
+ 
+      
 *   **Frontend (Angular) :**
     *   Dans le `ProductFormComponent`, nous utilisons des formulaires réactifs (`FormGroup`, `FormControl`).
     *   Le composant maintient une carte (`CATEGORY_FIELDS`) qui mappe chaque catégorie aux noms des champs qui doivent être requis pour cette catégorie.
@@ -103,6 +106,7 @@ La validation dynamique des champs selon la catégorie est implémentée de la m
     *   **Configuration :** Le répertoire de stockage est défini via la propriété `app.upload-dir` dans `application.properties`. Spring Boot crée ce répertoire s'il n'existe pas.
     *   **Entité `Produit` :** Contient le champ `fileName` pour stocker le nom du fichier.
     *   **`ProduitService` :**
+      
         *   La méthode `saveFile(MultipartFile file)` prend le fichier uploadé, génère un nom de fichier unique (UUID + extension originale), et le sauvegarde dans le répertoire `uploadDir` en utilisant `java.nio.file.Files`.
         *   Le nom du fichier généré est ensuite associé à l'entité `Produit`.
         *   La méthode `deleteFile()` est appelée lors de la suppression d'un produit pour supprimer le fichier du système de fichiers.
@@ -110,6 +114,8 @@ La validation dynamique des champs selon la catégorie est implémentée de la m
         *   Le endpoint `POST /api/produits` est configuré pour accepter les requêtes `multipart/form-data`.
         *   Il prend un `ProduitCreateDTO` comme modèle d'argument, qui inclut un champ `MultipartFile file`.
         *   Il appelle le service pour sauvegarder le fichier et créer le produit.
+     
+          
 *   **Frontend (Angular) :**
     *   Le `ProductFormComponent` utilise un `<input type="file">`.
     *   L'événement `(change)="onFileSelected($event)"` est utilisé pour capturer le fichier sélectionné.
@@ -125,10 +131,13 @@ La validation dynamique des champs selon la catégorie est implémentée de la m
 
 *   **Emails :**
     *   **Configuration SMTP :** Les détails du serveur SMTP (host, port, username, password, starttls/ssl) sont configurés dans `application.properties` (ou `application.yml`) du backend. Il est crucial d'utiliser des identifiants valides et fonctionnels (ex: mot de passe d'application pour Gmail).
+      
     *   **Envoi d'emails :**
         *   Dans le backend : Le `EmailService` contient les méthodes pour envoyer des emails simples (`sendSimpleMessage`) et HTML (`sendHtmlMessage`). Le `ProductService` appelle ces méthodes après la création/modification d'un produit.
         *   Frontend : Le frontend ne gère pas l'envoi direct des emails, mais il affiche des notifications pour confirmer que l'action (qui déclenche l'email) a été effectuée.
     *   **Alertes critiques :** le code est prévu pour pouvoir capturer les exceptions dans les services et appeler une méthode d'alerte qui enverrait un email à l'administrateur.
+
+      
 *   **Tâches planifiées (Cron Jobs) :**
     *   Dans le backend, la classe `ProductScheduler` utilise l'annotation `@Scheduled` avec des expressions CRON.
     *   `archiveOrDeleteExpiredProducts()` est planifiée pour s'exécuter tous les jours à minuit (`0 0 0 * * ?`). Elle trouve les produits périmés via `ProductService.getProduitsPerimes()` et les supprime.
