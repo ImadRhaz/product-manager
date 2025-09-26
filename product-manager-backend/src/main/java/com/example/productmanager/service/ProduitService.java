@@ -4,7 +4,7 @@ import com.example.productmanager.dto.ProduitUpdateDTO;
 import com.example.productmanager.model.Produit;
 import com.example.productmanager.repository.ProduitRepository;
 import com.example.productmanager.dto.ProduitCreateDTO;
-import com.example.productmanager.service.mail.EmailService; // Import du service d'email
+import com.example.productmanager.service.mail.EmailService; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.mail.MessagingException; // Pour la gestion des exceptions email
+import jakarta.mail.MessagingException; 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,11 +34,7 @@ public class ProduitService {
     @Value("${app.upload-dir:uploads/}")
     private String uploadDir;
 
-    /**
-     * Valide les champs du produit en fonction de sa catégorie.
-     * @param produit Le produit à valider.
-     * @throws IllegalArgumentException si la validation échoue.
-     */
+    
     private void validateProduit(Produit produit) {
         if (produit.getNom() == null || produit.getNom().trim().isEmpty()) {
             throw new IllegalArgumentException("Le nom du produit est obligatoire.");
@@ -196,8 +192,7 @@ public class ProduitService {
      * @param action L'action effectuée ("création" ou "modification").
      */
     private void sendConfirmationEmail(Produit produit, String action) {
-        // !!! IMPORTANT !!! Remplacez 'test_recipient@example.com' par une vraie adresse email pour tester
-        // Pour une application réelle, cette adresse devrait être récupérée de l'utilisateur ou être une adresse par défaut.
+       
         String recipientEmail = "test_recipient@example.com";
         String subject = "Confirmation de " + action + " du produit : " + produit.getNom();
 
