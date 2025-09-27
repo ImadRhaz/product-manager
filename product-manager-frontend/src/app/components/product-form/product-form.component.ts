@@ -225,7 +225,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         this.productService.updateProduitWithFile(this.produitId, produitAModifier, newFile).subscribe({
           next: () => {
             console.log('Produit mis à jour.');
-            this.router.navigate(['/products']);
+            this.router.navigate(['']); 
           },
           error: (err) => {
             console.error('Erreur lors de la mise à jour:', err);
@@ -247,7 +247,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         this.productService.createProduit(produitCreateDTO).subscribe({
           next: () => {
             console.log('Produit créé avec succès.');
-            this.router.navigate(['/products']);
+            this.router.navigate(['']); 
           },
           error: (err) => {
             console.error('Erreur lors de la création:', err);
@@ -286,5 +286,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       return `Fichier actuel: ${this.currentProduct.fileName}`;
     }
     return 'Aucun fichier sélectionné';
+  }
+
+  
+  onCancel(): void {
+    this.router.navigate(['']);
   }
 }
