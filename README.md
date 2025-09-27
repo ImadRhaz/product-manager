@@ -98,7 +98,7 @@ Ce projet se compose d'un backend (Spring Boot) et d'un frontend (Angular).
       spring.mail.properties.mail.smtp.starttls.enable=true
       ```
       
-    *Note :* Si vous rencontrez des problèmes, assurez-vous que votre compte Google autorise les applications moins sécurisées (bien que l'utilisation de mots de passe d'application soit la méthode recommandée et plus sécurisée).
+   
 
 ### <a name="explication-des-validations-dynamiques"></a>4. Explication des validations dynamiques
 
