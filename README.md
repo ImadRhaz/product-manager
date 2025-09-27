@@ -83,6 +83,23 @@ Ce projet se compose d'un backend (Spring Boot) et d'un frontend (Angular).
     *   Utilisez le formulaire pour créer, modifier des produits, y compris l'upload de fichiers.
     *   Vérifiez les notifications d'action (succès) qui apparaissent en haut à droite.
 
+    *   **Configuration Gmail pour l'envoi d'emails :**
+    Pour utiliser Gmail comme serveur d'envoi, vous devez suivre ces étapes :
+    1.  **Activer la vérification en 2 étapes** sur votre compte Google (si ce n'est pas déjà fait).
+    2.  **Générer un "Mot de passe d'application"** dans les paramètres de sécurité de votre compte Google. Ce mot de passe de 16 caractères remplacera votre mot de passe habituel dans la configuration.
+    3.  Configurez les propriétés `spring.mail.*` dans `src/main/resources/application.properties` avec votre adresse Gmail et le mot de passe d'application généré.
+
+      ```properties
+      spring.mail.host=smtp.gmail.com
+      spring.mail.port=587
+      spring.mail.username=votre_email@gmail.com
+      spring.mail.password=VOTRE_MOT_DE_PASSE_APPLICATION_16_CARACTERES
+      spring.mail.properties.mail.smtp.auth=true
+      spring.mail.properties.mail.smtp.starttls.enable=true
+      ```
+      
+    *Note :* Si vous rencontrez des problèmes, assurez-vous que votre compte Google autorise les applications moins sécurisées (bien que l'utilisation de mots de passe d'application soit la méthode recommandée et plus sécurisée).
+
 ### <a name="explication-des-validations-dynamiques"></a>4. Explication des validations dynamiques
 
 La validation dynamique des champs selon la catégorie est implémentée de la manière suivante :
